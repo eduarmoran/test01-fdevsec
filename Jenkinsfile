@@ -5,7 +5,7 @@ pipeline {
     }
 
     stages {
-        stage('App-02') {
+        stage('test01 FortiDevSec') {
             steps {
                 echo 'Hello World'
             }
