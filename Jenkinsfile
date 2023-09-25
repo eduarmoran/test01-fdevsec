@@ -22,7 +22,7 @@ pipeline {
         }
       
        
-    stage('SAST (FortiDevSec)'){
+    stage('SAST FortiDevSec'){
             steps {
                  sh 'env | grep -E "JENKINS_HOME|BUILD_ID|GIT_BRANCH|GIT_COMMIT" > /tmp/env'
                  sh 'docker pull registry.fortidevsec.forticloud.com/fdevsec_sast:latest'
@@ -41,14 +41,14 @@ pipeline {
                 }
             }
         }
-        
+    /*    
     stage('Deploy'){
             steps {
                  sh 'kubectl apply -f deployment.yml'
             }
         }             
-        /*
-        stage('DAST (FortiDevSec)'){
+        
+        stage('DAST FortiDevSec'){
             steps {
                  sh 'sleep 1m'
                  sh 'env | grep -E "JENKINS_HOME|BUILD_ID|GIT_BRANCH|GIT_COMMIT" > /tmp/env'
