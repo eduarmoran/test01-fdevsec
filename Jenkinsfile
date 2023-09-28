@@ -16,7 +16,7 @@ pipeline {
             steps { 
                 script{
                  /*sh 'docker build -t test01 .'*/
-                 app = docker.build("app02")
+                 app = docker.build("test01-fdevsec")
                 }
             }
         }
@@ -34,14 +34,14 @@ pipeline {
     stage('Push') {
             steps {
                 script{
-                    docker.withRegistry('https://363412468025.dkr.ecr.us-east-2.amazonaws.com/app02', 'ecr:us-east-2:emoran') {
+                    docker.withRegistry('https://363412468025.dkr.ecr.us-east-2.amazonaws.com/test01-fdevsec', 'ecr:us-east-2:emoran') {
                     app.push("${env.BUILD_NUMBER}")
                     app.push("latest")
                     }
                 }
             }
         }
-    /*    
+        
     stage('Deploy'){
             steps {
                  sh 'kubectl apply -f deployment.yml'
@@ -55,7 +55,7 @@ pipeline {
                  sh 'docker pull registry.fortidevsec.forticloud.com/fdevsec_dast:latest'
                  sh 'docker run --rm --env-file /tmp/env --mount type=bind,source=$PWD,target=/scan registry.fortidevsec.forticloud.com/fdevsec_dast:latest'                 
             }
-        }*/
+        }
         
     }
 }
