@@ -1,28 +1,28 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: app02
+  name: test01-fdevsec
 spec:
   template:
     metadata:
       labels:
-        app: app02
+        app: test01-fdevsec
     spec:
       containers:
-      - name: app02
-        image: 363412468025.dkr.ecr.us-east-2.amazonaws.com/app02:latest
+      - name: test01-fdevsec
+        image: 363412468025.dkr.ecr.us-east-2.amazonaws.com/test01-fdevsec:latest
   selector:
     matchLabels:
-      app: app02
+      app: test01-fdevsec
 ---
 kind: Service
 apiVersion: v1
 metadata:
-  name: app02
+  name: test01-fdevsec
 spec:
   type: LoadBalancer
   selector:
-    app: app02
+    app: test01-fdevsec
   ports:
   - name: http
     port: 5003
