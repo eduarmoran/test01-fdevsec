@@ -25,5 +25,5 @@ spec:
     app: test01-fdevsec
   ports:
   - name: http
-    port: 5004
-    targetPort: 3002
+    port: 5006
+    targetPort: 3006
